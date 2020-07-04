@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="SegmentedArcView">
+        <attr name="title" format="string" />
+        <attr name="value" format="string" />
+        <attr name="startAngle" format="float" />
+        <attr name="sweepAngle" format="float" />
+        <attr name="segmentSeparationAngle" format="float" />
+        <attr name="segmentThickness" format="float" />
+        <attr name="titleTypefaceSize" format="float" />
+        <attr name="valueTypefaceSize" format="float" />
+        <attr name="titleColor" format="color" />
+        <attr name="valueColor" format="color" />
+    </declare-styleable>
+</resources>

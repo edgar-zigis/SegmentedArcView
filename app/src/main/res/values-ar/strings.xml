@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SegmentedArcView</string>
+    <string name="outstanding_credit">الائتمان\nالمستحق</string>
+</resources>

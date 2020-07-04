@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">SegmentedArcView</string>
+    <string name="outstanding_credit">Outstanding\ncredit</string>
+</resources>

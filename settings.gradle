@@ -1,0 +1,3 @@
+include ':segmentedarcview'
+include ':app'
+rootProject.name = "SegmentedArcView"
