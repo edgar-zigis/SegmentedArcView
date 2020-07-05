@@ -38,14 +38,17 @@ open class SegmentedArcView : View  {
             invalidate()
         }
 
-    var titleColor = Color.parseColor("#525252")
-    var valueColor = Color.parseColor("#1A1A1A")
+    var titleTextColor = Color.parseColor("#525252")
+    var valueTextColor = Color.parseColor("#1A1A1A")
 
     var titleTypeFace = Typeface.create("sans-serif-light", Typeface.NORMAL)
     var valueTypeface = Typeface.create("sans-serif", Typeface.BOLD)
 
     var titleTypefaceSize = dp(20f)
     var valueTypefaceSize = dp(55f)
+
+    var titleVerticalOffset = 0f
+    var valueVerticalOffset = 0f
 
     var blinkAnimationSettings = BlinkAnimationSettings(
         minAlpha = 0.4F,
@@ -124,14 +127,16 @@ open class SegmentedArcView : View  {
 
         title = styledAttributes.getString(R.styleable.SegmentedArcView_title) ?: ""
         value = styledAttributes.getString(R.styleable.SegmentedArcView_value) ?: ""
-        titleTypefaceSize = styledAttributes.getFloat(R.styleable.SegmentedArcView_titleTypefaceSize, titleTypefaceSize)
-        valueTypefaceSize = styledAttributes.getFloat(R.styleable.SegmentedArcView_valueTypefaceSize, valueTypefaceSize)
-        titleColor = styledAttributes.getColor(R.styleable.SegmentedArcView_titleColor, titleColor)
-        valueColor = styledAttributes.getColor(R.styleable.SegmentedArcView_valueColor, valueColor)
+        titleTypefaceSize = styledAttributes.getDimension(R.styleable.SegmentedArcView_titleTypefaceSize, titleTypefaceSize)
+        valueTypefaceSize = styledAttributes.getDimension(R.styleable.SegmentedArcView_valueTypefaceSize, valueTypefaceSize)
+        titleVerticalOffset = styledAttributes.getDimension(R.styleable.SegmentedArcView_titleVerticalOffset, titleVerticalOffset)
+        valueVerticalOffset = styledAttributes.getDimension(R.styleable.SegmentedArcView_valueVerticalOffset, valueVerticalOffset)
+        titleTextColor = styledAttributes.getColor(R.styleable.SegmentedArcView_titleTextColor, titleTextColor)
+        valueTextColor = styledAttributes.getColor(R.styleable.SegmentedArcView_valueTextColor, valueTextColor)
         startAngle = styledAttributes.getFloat(R.styleable.SegmentedArcView_startAngle, startAngle)
         sweepAngle = styledAttributes.getFloat(R.styleable.SegmentedArcView_sweepAngle, sweepAngle)
         segmentSeparationAngle = styledAttributes.getFloat(R.styleable.SegmentedArcView_segmentSeparationAngle, segmentSeparationAngle)
-        segmentThickness = styledAttributes.getFloat(R.styleable.SegmentedArcView_segmentThickness, segmentThickness)
+        segmentThickness = styledAttributes.getDimension(R.styleable.SegmentedArcView_segmentThickness, segmentThickness)
     }
 
     override fun onDraw(canvas: Canvas) {
@@ -176,7 +181,7 @@ open class SegmentedArcView : View  {
 
     @Suppress("DEPRECATION")
     private fun drawTitleText(canvas: Canvas) {
-        titlePaint.color = titleColor
+        titlePaint.color = titleTextColor
         titlePaint.typeface = titleTypeFace
         titlePaint.textSize = titleTypefaceSize
         titlePaint.getTextBounds(title, 0, title.length, titleRect)
@@ -191,7 +196,7 @@ open class SegmentedArcView : View  {
 
         canvas.save()
 
-        canvas.translate(0f, measuredHeight / 4.8f)
+        canvas.translate(0f, measuredHeight / 4.8f + titleVerticalOffset)
         textLayout.draw(canvas)
 
         canvas.restore()
@@ -199,7 +204,7 @@ open class SegmentedArcView : View  {
 
     @Suppress("DEPRECATION")
     private fun drawValueText(canvas: Canvas) {
-        valuePaint.color = valueColor
+        valuePaint.color = valueTextColor
         valuePaint.typeface = valueTypeface
         valuePaint.textSize = valueTypefaceSize
         valuePaint.getTextBounds(value, 0, value.length, valueRect)
@@ -214,7 +219,7 @@ open class SegmentedArcView : View  {
 
         canvas.save()
 
-        canvas.translate(0f, measuredHeight / 2f - valueRect.height() / 1.5f)
+        canvas.translate(0f, measuredHeight / 2f - valueRect.height() / 1.5f + valueVerticalOffset)
         textLayout.draw(canvas)
 
         canvas.restore()

@@ -4,7 +4,7 @@ Unique progress view with rich customisation options! You can set any number of 
 can be customised with gradients and there is even an animation option!
 ##### Minimum target SDK: 17. RTL SUPPORTED.
 
-![alt text](https://github.com/edgar-zigis/SegmentedArcView/blob/master/sample.png?raw=true)
+![alt text](https://github.com/edgar-zigis/SegmentedArcView/blob/master/preview.png?raw=true)
 
 ### Gradle
 Make sure you have jitpack.io included in your gradle repositories.
@@ -29,8 +29,10 @@ implementation 'com.github.edgar-zigis:segmentedarcview:1.0.0'
     app:value="150 €"  //  -> custom value text
     app:titleTypefaceSize="20dp"  //  -> custom title text size
     app:valueTypefaceSize="55dp"  //  -> custom value text size
-    app:titleColor="@android:color/darker_gray"  //  -> custom title text color
-    app:valueColor="@android:color/black"  //  -> custom value text color
+    app:titleTextColor="@android:color/darker_gray"  //  -> custom title text color
+    app:valueTextColor="@android:color/black"  //  -> custom value text color
+    app:titleVerticalOffset="20dp"  //  -> offset vertical position of the title
+    app:valueVerticalOffset="-10dp"  //  -> offset vertical position of the value
     app:startAngle="150"  //  -> arc start angle in degrees
     app:sweepAngle="240"  //  -> arc sweep angle in degrees
     app:segmentSeparationAngle="9"  //  -> arc separator width in degrees

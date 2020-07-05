@@ -6,10 +6,12 @@
         <attr name="startAngle" format="float" />
         <attr name="sweepAngle" format="float" />
         <attr name="segmentSeparationAngle" format="float" />
-        <attr name="segmentThickness" format="float" />
-        <attr name="titleTypefaceSize" format="float" />
-        <attr name="valueTypefaceSize" format="float" />
-        <attr name="titleColor" format="color" />
-        <attr name="valueColor" format="color" />
+        <attr name="segmentThickness" format="dimension" />
+        <attr name="titleTypefaceSize" format="dimension" />
+        <attr name="valueTypefaceSize" format="dimension" />
+        <attr name="titleTextColor" format="color" />
+        <attr name="valueTextColor" format="color" />
+        <attr name="titleVerticalOffset" format="dimension" />
+        <attr name="valueVerticalOffset" format="dimension" />
     </declare-styleable>
 </resources>
