@@ -13,7 +13,7 @@ Make sure you have jitpack.io included in your gradle repositories.
 maven { url "https://jitpack.io" }
 ```
 ```
-implementation 'com.github.edgar-zigis:segmentedarcview:1.0.0'
+implementation 'com.github.edgar-zigis:segmentedarcview:1.0.1'
 ```
 ### Usage
 ``` xml
