@@ -23,9 +23,14 @@ open class SegmentedArcView : View  {
     //  Setting vars
 
     var startAngle = 150f
-    var sweepAngle = 240f
     var segmentSeparationAngle = 9f
     var segmentThickness = dp(7.5f)
+
+    var sweepAngle = 240f
+        set(value) {
+            field = value
+            invalidate()
+        }
 
     var title = ""
         set(value) {
