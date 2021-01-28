@@ -14,7 +14,8 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:title="@string/outstanding_credit"
-        app:value="150 €" />
+        app:sav_title="@string/outstanding_credit"
+        app:sav_useCustomSweepAngles="true"
+        app:sav_value="150 €" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

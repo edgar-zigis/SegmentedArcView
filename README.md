@@ -13,7 +13,7 @@ Make sure you have jitpack.io included in your gradle repositories.
 maven { url "https://jitpack.io" }
 ```
 ```
-implementation 'com.github.edgar-zigis:segmentedarcview:1.0.2'
+implementation 'com.github.edgar-zigis:segmentedarcview:1.1.0'
 ```
 ### Usage
 ``` xml
@@ -25,25 +25,24 @@ implementation 'com.github.edgar-zigis:segmentedarcview:1.0.2'
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
     app:layout_constraintTop_toTopOf="parent"
-    app:title="@string/outstanding_credit"  //  -> custom title text
-    app:value="150 €"  //  -> custom value text
-    app:titleTypefaceSize="20dp"  //  -> custom title text size
-    app:valueTypefaceSize="55dp"  //  -> custom value text size
-    app:titleTextColor="@android:color/darker_gray"  //  -> custom title text color
-    app:valueTextColor="@android:color/black"  //  -> custom value text color
-    app:titleVerticalOffset="20dp"  //  -> offset vertical position of the title
-    app:valueVerticalOffset="-10dp"  //  -> offset vertical position of the value
-    app:startAngle="150"  //  -> arc start angle in degrees
-    app:sweepAngle="240"  //  -> arc sweep angle in degrees
-    app:segmentSeparationAngle="9"  //  -> arc separator width in degrees
-    app:segmentThickness="8dp" />  //  -> individual segment thickness
+    app:sav_title="@string/outstanding_credit"  //  -> custom title text
+    app:sav_value="150 €"  //  -> custom value text
+    app:sav_titleTypefaceSize="20dp"  //  -> custom title text size
+    app:sav_valueTypefaceSize="55dp"  //  -> custom value text size
+    app:sav_titleFont="@font/tt_norms_pro_bold"  //  -> custom title font
+    app:sav_valueFont="@font/tt_norms_pro_medium"  //  -> custom value font
+    app:sav_titleTextColor="@android:color/darker_gray"  //  -> custom title text color
+    app:sav_valueTextColor="@android:color/black"  //  -> custom value text color
+    app:sav_titleVerticalOffset="20dp"  //  -> offset vertical position of the title
+    app:sav_valueVerticalOffset="-10dp"  //  -> offset vertical position of the value
+    app:sav_startAngle="150"  //  -> arc start angle in degrees
+    app:sav_sweepAngle="240"  //  -> arc sweep angle in degrees
+    app:sav_segmentSeparationAngle="9"  //  -> arc separator width in degrees
+    app:sav_segmentThickness="8dp"  //  -> individual segment thickness
+    app:sav_useCustomSweepAngles="true" />  //  -> enable variable segment sweep angles (note, segment sweeAngles need be set too!)
 ```
 Some of the parameters however can be only set programmatically
 ``` kotlin
-//  set fonts
-progressView.titleTypeFace = Typeface.createFromAsset(assets, "equip_regular.ttf")
-progressView.valueTypeface = Typeface.createFromAsset(assets, "ttnorms_bold.otf")
-
 //  if blinking is enabled, then settings can be passed through here
 progressView.blinkAnimationSettings = BlinkAnimationSettings(
     minAlpha = 0.4F,
@@ -59,4 +58,7 @@ progressView.segments = listOf(
     ArcSegment(Color.parseColor("#e7ddba"), Color.parseColor("#efc956"), animate = true),
     ArcSegment(Color.parseColor("#e5e5e5"), Color.parseColor("#d3d3d3"))
 )
+//  if you want to set custom sweep angles, you need to set useCustomSweepAngles param to true
+//  via xml or programatically and set angles to each segment you have:
+ArcSegment(Color.parseColor("#eb3f25"), Color.parseColor("#eb3f25"), sweepAngle = 30f)
 ```

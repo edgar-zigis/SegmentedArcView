@@ -10,6 +10,7 @@ import android.text.TextPaint
 import android.util.AttributeSet
 import android.util.TypedValue
 import android.view.View
+import androidx.core.content.res.ResourcesCompat
 import com.zigis.segmentedarcview.custom.ArcSegment
 import com.zigis.segmentedarcview.custom.BlinkAnimationSettings
 import com.zigis.segmentedarcview.custom.Coordinate2F
@@ -76,6 +77,7 @@ open class SegmentedArcView : View  {
             }
             invalidate()
         }
+    var useCustomSweepAgles = false
 
     //  Private vars
 
@@ -130,18 +132,28 @@ open class SegmentedArcView : View  {
             0
         )
 
-        title = styledAttributes.getString(R.styleable.SegmentedArcView_title) ?: ""
-        value = styledAttributes.getString(R.styleable.SegmentedArcView_value) ?: ""
-        titleTypefaceSize = styledAttributes.getDimension(R.styleable.SegmentedArcView_titleTypefaceSize, titleTypefaceSize)
-        valueTypefaceSize = styledAttributes.getDimension(R.styleable.SegmentedArcView_valueTypefaceSize, valueTypefaceSize)
-        titleVerticalOffset = styledAttributes.getDimension(R.styleable.SegmentedArcView_titleVerticalOffset, titleVerticalOffset)
-        valueVerticalOffset = styledAttributes.getDimension(R.styleable.SegmentedArcView_valueVerticalOffset, valueVerticalOffset)
-        titleTextColor = styledAttributes.getColor(R.styleable.SegmentedArcView_titleTextColor, titleTextColor)
-        valueTextColor = styledAttributes.getColor(R.styleable.SegmentedArcView_valueTextColor, valueTextColor)
-        startAngle = styledAttributes.getFloat(R.styleable.SegmentedArcView_startAngle, startAngle)
-        sweepAngle = styledAttributes.getFloat(R.styleable.SegmentedArcView_sweepAngle, sweepAngle)
-        segmentSeparationAngle = styledAttributes.getFloat(R.styleable.SegmentedArcView_segmentSeparationAngle, segmentSeparationAngle)
-        segmentThickness = styledAttributes.getDimension(R.styleable.SegmentedArcView_segmentThickness, segmentThickness)
+        title = styledAttributes.getString(R.styleable.SegmentedArcView_sav_title) ?: ""
+        value = styledAttributes.getString(R.styleable.SegmentedArcView_sav_value) ?: ""
+        titleTypefaceSize = styledAttributes.getDimension(R.styleable.SegmentedArcView_sav_titleTypefaceSize, titleTypefaceSize)
+        valueTypefaceSize = styledAttributes.getDimension(R.styleable.SegmentedArcView_sav_valueTypefaceSize, valueTypefaceSize)
+        titleVerticalOffset = styledAttributes.getDimension(R.styleable.SegmentedArcView_sav_titleVerticalOffset, titleVerticalOffset)
+        valueVerticalOffset = styledAttributes.getDimension(R.styleable.SegmentedArcView_sav_valueVerticalOffset, valueVerticalOffset)
+        titleTextColor = styledAttributes.getColor(R.styleable.SegmentedArcView_sav_titleTextColor, titleTextColor)
+        valueTextColor = styledAttributes.getColor(R.styleable.SegmentedArcView_sav_valueTextColor, valueTextColor)
+        startAngle = styledAttributes.getFloat(R.styleable.SegmentedArcView_sav_startAngle, startAngle)
+        sweepAngle = styledAttributes.getFloat(R.styleable.SegmentedArcView_sav_sweepAngle, sweepAngle)
+        segmentSeparationAngle = styledAttributes.getFloat(R.styleable.SegmentedArcView_sav_segmentSeparationAngle, segmentSeparationAngle)
+        segmentThickness = styledAttributes.getDimension(R.styleable.SegmentedArcView_sav_segmentThickness, segmentThickness)
+        useCustomSweepAgles = styledAttributes.getBoolean(R.styleable.SegmentedArcView_sav_useCustomSweepAngles, useCustomSweepAgles)
+
+        val customTitleFontRes = styledAttributes.getResourceId(R.styleable.SegmentedArcView_sav_titleFont, 0)
+        if (customTitleFontRes > 0) {
+            titleTypeFace = ResourcesCompat.getFont(context, customTitleFontRes) ?: titleTypeFace
+        }
+        val customValueFontRes = styledAttributes.getResourceId(R.styleable.SegmentedArcView_sav_valueFont, 0)
+        if (customValueFontRes > 0) {
+            valueTypeface = ResourcesCompat.getFont(context, customValueFontRes) ?: valueTypeface
+        }
     }
 
     override fun onDraw(canvas: Canvas) {
@@ -153,6 +165,7 @@ open class SegmentedArcView : View  {
 
         var angle = startAngle
         segments.mapIndexed { index, arcSegment ->
+            val sweepAngle = if (useCustomSweepAgles) arcSegment.sweepAngle else segmentSweepAngle
             drawArcSegment(
                 canvas,
                 outerRadius,
@@ -160,11 +173,11 @@ open class SegmentedArcView : View  {
                 innerRadius,
                 outerRadius,
                 angle,
-                segmentSweepAngle,
+                sweepAngle,
                 arcSegment,
                 segmentPaints[index]
             )
-            angle += (segmentSweepAngle + segmentSeparationAngle)
+            angle += (sweepAngle + segmentSeparationAngle)
         }
 
         drawTitleText(canvas)
