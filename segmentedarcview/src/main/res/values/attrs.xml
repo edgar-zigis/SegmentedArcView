@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="SegmentedArcView">
-        <attr name="title" format="string" />
-        <attr name="value" format="string" />
-        <attr name="startAngle" format="float" />
-        <attr name="sweepAngle" format="float" />
-        <attr name="segmentSeparationAngle" format="float" />
-        <attr name="segmentThickness" format="dimension" />
-        <attr name="titleTypefaceSize" format="dimension" />
-        <attr name="valueTypefaceSize" format="dimension" />
-        <attr name="titleTextColor" format="color" />
-        <attr name="valueTextColor" format="color" />
-        <attr name="titleVerticalOffset" format="dimension" />
-        <attr name="valueVerticalOffset" format="dimension" />
+        <attr name="sav_title" format="string" />
+        <attr name="sav_value" format="string" />
+        <attr name="sav_startAngle" format="float" />
+        <attr name="sav_sweepAngle" format="float" />
+        <attr name="sav_segmentSeparationAngle" format="float" />
+        <attr name="sav_segmentThickness" format="dimension" />
+        <attr name="sav_titleTypefaceSize" format="dimension" />
+        <attr name="sav_valueTypefaceSize" format="dimension" />
+        <attr name="sav_titleTextColor" format="color" />
+        <attr name="sav_valueTextColor" format="color" />
+        <attr name="sav_titleVerticalOffset" format="dimension" />
+        <attr name="sav_valueVerticalOffset" format="dimension" />
+        <attr name="sav_useCustomSweepAngles" format="boolean" />
+        <attr name="sav_titleFont" format="reference" />
+        <attr name="sav_valueFont" format="reference" />
     </declare-styleable>
 </resources>
