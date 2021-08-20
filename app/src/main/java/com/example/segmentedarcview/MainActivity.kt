@@ -5,25 +5,29 @@ import android.graphics.Color
 import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.LayoutInflater
 import com.example.segmentedarcview.custom.ContextWrapper
+import com.example.segmentedarcview.databinding.ActivityMainBinding
 import com.zigis.segmentedarcview.custom.ArcSegment
 import com.zigis.segmentedarcview.custom.BlinkAnimationSettings
-import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        progressView.titleTypeFace = Typeface.createFromAsset(assets, "equip_regular.ttf")
-        progressView.valueTypeface = Typeface.createFromAsset(assets, "ttnorms_bold.otf")
-        progressView.blinkAnimationSettings = BlinkAnimationSettings(
+
+        val binding = ActivityMainBinding.inflate(LayoutInflater.from(this))
+        setContentView(binding.root)
+
+        binding.progressView.titleTypeFace = Typeface.createFromAsset(assets, "equip_regular.ttf")
+        binding.progressView.valueTypeface = Typeface.createFromAsset(assets, "ttnorms_bold.otf")
+        binding.progressView.blinkAnimationSettings = BlinkAnimationSettings(
             minAlpha = 0.4F,
             maxAlpha = 1F,
             duration = 2000L
         )
-        progressView.segments = listOf(
+        binding.progressView.segments = listOf(
             ArcSegment(Color.parseColor("#eb3f25"), Color.parseColor("#eb3f25")),
             ArcSegment(Color.parseColor("#eb3f25"), Color.parseColor("#eb3f25")),
             ArcSegment(Color.parseColor("#e7ddba"), Color.parseColor("#efc956"), animate = false),
