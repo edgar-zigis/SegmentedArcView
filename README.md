@@ -9,10 +9,10 @@ can be customised with gradients and there is even an animation option!
 ### Gradle
 Make sure you have jitpack.io included in your gradle repositories.
 
-```
+```gradle
 maven { url "https://jitpack.io" }
 ```
-```
+```gradle
 implementation 'com.github.edgar-zigis:segmentedarcview:1.1.1'
 ```
 ### Usage
