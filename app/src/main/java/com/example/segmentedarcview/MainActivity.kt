@@ -16,23 +16,22 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        val binding = ActivityMainBinding.inflate(LayoutInflater.from(this))
-        setContentView(binding.root)
-
-        binding.progressView.titleTypeFace = Typeface.createFromAsset(assets, "equip_regular.ttf")
-        binding.progressView.valueTypeface = Typeface.createFromAsset(assets, "ttnorms_bold.otf")
-        binding.progressView.blinkAnimationSettings = BlinkAnimationSettings(
-            minAlpha = 0.4F,
-            maxAlpha = 1F,
-            duration = 2000L
-        )
-        binding.progressView.segments = listOf(
-            ArcSegment(Color.parseColor("#eb3f25"), Color.parseColor("#eb3f25")),
-            ArcSegment(Color.parseColor("#eb3f25"), Color.parseColor("#eb3f25")),
-            ArcSegment(Color.parseColor("#e7ddba"), Color.parseColor("#efc956"), animate = false),
-            ArcSegment(Color.parseColor("#e5e5e5"), Color.parseColor("#d3d3d3"))
-        )
+        ActivityMainBinding.inflate(LayoutInflater.from(this)).apply {
+            setContentView(root)
+            progressView.titleTypeFace = Typeface.createFromAsset(assets, "equip_regular.ttf")
+            progressView.valueTypeface = Typeface.createFromAsset(assets, "ttnorms_bold.otf")
+            progressView.blinkAnimationSettings = BlinkAnimationSettings(
+                minAlpha = 0.4F,
+                maxAlpha = 1F,
+                duration = 2000L
+            )
+            progressView.segments = listOf(
+                ArcSegment(Color.parseColor("#eb3f25"), Color.parseColor("#eb3f25")),
+                ArcSegment(Color.parseColor("#eb3f25"), Color.parseColor("#eb3f25")),
+                ArcSegment(Color.parseColor("#e7ddba"), Color.parseColor("#efc956"), animate = false),
+                ArcSegment(Color.parseColor("#e5e5e5"), Color.parseColor("#d3d3d3"))
+            )
+        }
     }
 
     override fun attachBaseContext(newBase: Context?) {
