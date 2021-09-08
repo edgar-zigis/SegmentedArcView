@@ -1,7 +1,7 @@
 # SegmentedArcView
 
 Unique progress view with rich customisation options! You can set any number of segments, each individual segment
-can be customised with gradients and there is even an animation option!
+can be customised with gradients and there is even a segment animation option!
 ##### Minimum target SDK: 17. RTL SUPPORTED.
 
 ![alt text](https://github.com/edgar-zigis/SegmentedArcView/blob/master/preview.png?raw=true)
