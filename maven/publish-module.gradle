@@ -1,0 +1,69 @@
+apply plugin: 'maven-publish'
+apply plugin: 'signing'
+
+task androidSourcesJar(type: Jar) {
+    archiveClassifier.set('sources')
+    if (project.plugins.findPlugin("com.android.library")) {
+        from android.sourceSets.main.java.srcDirs
+        from android.sourceSets.main.kotlin.srcDirs
+    } else {
+        from sourceSets.main.java.srcDirs
+        from sourceSets.main.kotlin.srcDirs
+    }
+}
+
+artifacts {
+    archives androidSourcesJar
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                groupId "com.bio-matic"
+                artifactId PUBLISH_ARTIFACT_ID
+                version sdkVersion
+                if (project.plugins.findPlugin("com.android.library")) {
+                    from components.release
+                } else {
+                    from components.java
+                }
+
+                artifact androidSourcesJar
+
+                pom {
+                    name = PUBLISH_ARTIFACT_ID
+                    description = "SegmentedArcView"
+                    url = "https://github.com/edgar-zigis/SegmentedArcView"
+                    licenses {
+                        license {
+                            name = "MIT License"
+                            url = "http://www.opensource.org/licenses/mit-license.php"
+                        }
+                    }
+                    developers {
+                        developer {
+                            id = "biomatic"
+                            name = "Edgar Žigis"
+                            email = "admin@bio-matic.com"
+                        }
+                    }
+                    scm {
+                        connection = "scm:git:github.com/edgar-zigis/SegmentedArcView.git"
+                        developerConnection = "scm:git:ssh://github.com/edgar-zigis/SegmentedArcView.git"
+                        url = "https://github.com/edgar-zigis/SegmentedArcView/tree/master"
+                    }
+                }
+            }
+        }
+    }
+}
+
+signing {
+    useInMemoryPgpKeys(
+            rootProject.ext["mavenSigningKeyId"],
+            rootProject.ext["mavenSigningKey"],
+            rootProject.ext["mavenSigningKeyPassword"],
+    )
+    sign publishing.publications
+}
