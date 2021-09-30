@@ -7,13 +7,17 @@ can be customised with gradients and there is even a segment animation option!
 ![alt text](https://github.com/edgar-zigis/SegmentedArcView/blob/master/preview.png?raw=true)
 
 ### Gradle
-Make sure you have jitpack.io included in your gradle repositories.
+Make sure you have **Maven Central** included in your gradle repositories.
 
 ```gradle
-maven { url "https://jitpack.io" }
+allprojects {
+    repositories {
+        mavenCentral()
+    }
+}
 ```
 ```gradle
-implementation 'com.github.edgar-zigis:segmentedarcview:1.1.1'
+implementation 'com.bio-matic:segmentedarcview:1.1.2'
 ```
 ### Usage
 ``` xml
