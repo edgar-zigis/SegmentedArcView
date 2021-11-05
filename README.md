@@ -1,4 +1,4 @@
-# SegmentedArcView
+# SegmentedArcView [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.bio-matic/segmentedarcview/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.bio-matic/segmentedarcview)
 
 Unique progress view with rich customisation options! You can set any number of segments, each individual segment
 can be customised with gradients and there is even a segment animation option!
