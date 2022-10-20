@@ -342,7 +342,7 @@ open class SegmentedArcView : View  {
     //  Helper methods
 
     private fun isRTL(): Boolean {
-        return resources.configuration.layoutDirection == View.LAYOUT_DIRECTION_RTL
+        return resources.configuration.layoutDirection == LAYOUT_DIRECTION_RTL
     }
 
     private fun dp(dp: Float): Float {
