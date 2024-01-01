@@ -8,11 +8,13 @@ ext {
 apply from: "${rootProject.projectDir}/maven/publish-module.gradle"
 
 android {
-    compileSdkVersion 33
+
+    namespace 'com.zigis.segmentedarcview'
+    compileSdk 34
 
     defaultConfig {
         minSdkVersion 17
-        targetSdkVersion 33
+        targetSdkVersion 34
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -24,8 +26,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    kotlin {
+        jvmToolchain(17)
+    }
 }
 
 dependencies {
-    implementation 'androidx.core:core-ktx:1.9.0'
+    implementation 'androidx.core:core-ktx:1.12.0'
 }

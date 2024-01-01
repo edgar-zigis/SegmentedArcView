@@ -2,12 +2,14 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 
 android {
-    compileSdkVersion 33
+
+    namespace 'com.example.segmentedarcview'
+    compileSdk 34
 
     defaultConfig {
         applicationId "com.zigis.segmentedarcview.sample"
         minSdkVersion 17
-        targetSdkVersion 33
+        targetSdkVersion 34
         versionCode 1
         versionName "1.0"
 
@@ -24,11 +26,15 @@ android {
     buildFeatures {
         viewBinding true
     }
+
+    kotlin {
+        jvmToolchain(17)
+    }
 }
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.5.1'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation project(':segmentedarcview')
 }
