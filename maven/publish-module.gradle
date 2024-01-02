@@ -1,35 +1,14 @@
 apply plugin: 'maven-publish'
 apply plugin: 'signing'
 
-task androidSourcesJar(type: Jar) {
-    archiveClassifier.set('sources')
-    if (project.plugins.findPlugin("com.android.library")) {
-        from android.sourceSets.main.java.srcDirs
-        from android.sourceSets.main.kotlin.srcDirs
-    } else {
-        from sourceSets.main.java.srcDirs
-        from sourceSets.main.kotlin.srcDirs
-    }
-}
-
-artifacts {
-    archives androidSourcesJar
-}
-
 afterEvaluate {
     publishing {
         publications {
             release(MavenPublication) {
+                from components.release
                 groupId "com.bio-matic"
                 artifactId PUBLISH_ARTIFACT_ID
                 version sdkVersion
-                if (project.plugins.findPlugin("com.android.library")) {
-                    from components.release
-                } else {
-                    from components.java
-                }
-
-                artifact androidSourcesJar
 
                 pom {
                     name = PUBLISH_ARTIFACT_ID

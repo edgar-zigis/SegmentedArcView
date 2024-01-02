@@ -1,5 +1,7 @@
-apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
+plugins {
+    id "com.android.application"
+    id 'org.jetbrains.kotlin.android'
+}
 
 ext {
     PUBLISH_ARTIFACT_ID = "segmentedarcview"
@@ -32,14 +34,13 @@ android {
         targetCompatibility JavaVersion.VERSION_17
     }
 
-    kotlin {
-        jvmToolchain(17)
+    kotlinOptions {
+        jvmTarget = '17'
     }
 
     publishing {
         singleVariant("release") {
             withSourcesJar()
-            withJavadocJar()
         }
     }
 }
