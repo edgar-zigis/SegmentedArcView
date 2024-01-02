@@ -17,7 +17,7 @@ allprojects {
 }
 ```
 ```gradle
-implementation 'com.bio-matic:segmentedarcview:1.1.2'
+implementation 'com.bio-matic:segmentedarcview:1.1.3'
 ```
 ### Usage
 ``` xml
