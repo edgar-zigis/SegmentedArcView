@@ -1,4 +1,4 @@
-name: Maven Publishing
+name: Maven Publish
 
 on:
   release:
@@ -9,13 +9,14 @@ jobs:
     name: Publish to MavenCentral
     runs-on: ubuntu-latest
     steps:
-      - name: Check out code
+      - name: Checkout code
         uses: actions/checkout@v1
 
-      - name: set up JDK 11
-        uses: actions/setup-java@v1
+      - name: Setup JDK 17
+        uses: actions/setup-java@v3
         with:
-          java-version: 11
+          java-version: '17'
+          distribution: 'temurin'
 
       - name: Publish to MavenCentral
         run: ./gradlew publishReleasePublicationToSonatypeRepository --max-workers 1 closeAndReleaseSonatypeStagingRepository
