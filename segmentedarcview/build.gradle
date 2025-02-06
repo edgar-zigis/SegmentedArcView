@@ -12,11 +12,11 @@ apply from: "${rootProject.projectDir}/maven/publish-module.gradle"
 android {
 
     namespace 'com.zigis.segmentedarcview'
-    compileSdk 34
+    compileSdk 35
 
     defaultConfig {
-        minSdkVersion 17
-        targetSdkVersion 34
+        minSdkVersion 21
+        targetSdkVersion 35
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -46,5 +46,5 @@ android {
 }
 
 dependencies {
-    implementation 'androidx.core:core-ktx:1.12.0'
+    implementation 'androidx.core:core-ktx:1.15.0'
 }
