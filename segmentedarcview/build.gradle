@@ -12,11 +12,11 @@ apply from: "${rootProject.projectDir}/maven/publish-module.gradle"
 android {
 
     namespace 'com.zigis.segmentedarcview'
-    compileSdk 35
+    compileSdk 36
 
     defaultConfig {
         minSdkVersion 21
-        targetSdkVersion 35
+        targetSdkVersion 36
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
